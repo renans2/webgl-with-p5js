@@ -46,7 +46,7 @@ function drawBranch(depth){
         const len = lens[i];
         i++;
 
-        strokeWeight(map(depth, 5, 1, 20, 0));
+        strokeWeight(map(depth, 5, 1, 25, 2.5));
         line(0, 0, 0, 0, len, 0);
         translate(0, len, 0);
 
