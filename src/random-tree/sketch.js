@@ -14,23 +14,25 @@ let hue = 120;
 function setup() {
     console.log(arrayLength);
     createCanvas(windowWidth, windowHeight, WEBGL);
-    colorMode(HSL);
+    // colorMode(HSL);
     generateArrays();
+    noStroke();
 }
 
 function draw() {
-    camera(sin(frameCount * 0.02) * 1000, 0, cos(frameCount * 0.02) * 1000, 0, 0, 0, 0, 1, 0);
-    normalMaterial();
-    background(0);
+    frameRate(24);
+    pointLight(255,255,255,1000,0,1000);
+    pointLight(255,255,255,-1000,0,1000);
+    camera(0, 0, 1250, 0, 0, 0, 0, 1, 0);
+    rotateY(frameCount * -0.075);
+    specularMaterial(128, 175, 129);
+    shininess(40);
+    fill(128, 175, 129);
+    background(212, 231, 197);
     scale(1,-1,1);
-    stroke(hue, 100, 50, 0.25);
-    strokeWeight(5);
 
-    translate(0,-300,0);
-    push();
-    noStroke();
-    box(100,5,100)
-    pop();
+    translate(0,-350,0);
+    box(150,10,150)
     drawBranch(depth);
 
     i = 0;
@@ -46,9 +48,9 @@ function drawBranch(depth){
         const len = lens[i];
         i++;
 
-        strokeWeight(map(depth, 5, 1, 25, 2.5));
-        line(0, 0, 0, 0, len, 0);
-        translate(0, len, 0);
+        translate(0, len/2, 0);
+        cylinder(map(depth, 9, 1, 20, 1.75), len);
+        translate(0, len/2, 0);
 
         for (let i = 0; i < nNewBranches/2; i++) {
             push();
