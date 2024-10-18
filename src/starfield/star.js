@@ -1,5 +1,5 @@
 const minSize = 20;
-const maxSize = 1000;
+const maxSize = 2500;
 const widthAndHeight = 2;
 
 class Star{
@@ -18,7 +18,7 @@ class Star{
 
     show(){
         push();
-        translate(this.x, this.y, this.z - this.size/2);
+        translate(this.x, this.y, this.z + this.size/2);
         box(widthAndHeight, widthAndHeight, this.size);
         pop();
     }
